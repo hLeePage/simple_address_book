@@ -11,7 +11,7 @@ class Address
       if street_2
         address += " " + street_2
       end
-      address += " #{city}, #{state}, #{zip}"
+      address += "#{city}, #{state}, #{zip}"
     when 'long'
       address += street_1 + "\n"
       address += street_2 + "\n" if !street_2.nil?

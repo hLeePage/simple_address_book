@@ -1,8 +1,8 @@
+require './phone_number'
+require './address'
+
+
 class Contact
-
-  require './phone_number'
-  require './address'
-
   attr_writer :first_name, :middle_name, :last_name
   attr_reader :phone_numbers, :addresses
 
@@ -95,14 +95,3 @@ class Contact
   end
 
 end
-
-lee = Contact.new
-lee.first_name = "Harry"
-lee.middle_name = "Lee"
-lee.last_name = "Page"
-lee.add_phone("mobile", "615.573.2436")
-lee.add_phone("home", "615.573.2436")
-lee.add_address("home", "158 Woodmont Blvd", "", "Nashville", "TN", "37205")
-
-lee.print_phone_numbers
-lee.print_addresses
