@@ -7,11 +7,11 @@ class Address
     case format
     when 'short'
       address += "#{kind}: "
-      address += street_1
+      address += street_1 + ","
       if street_2
         address += " " + street_2
       end
-      address += ", #{city}, #{state}, #{zip}"
+      address += " #{city}, #{state}, #{zip}"
     when 'long'
       address += street_1 + "\n"
       address += street_2 + "\n" if !street_2.nil?
@@ -19,16 +19,5 @@ class Address
     end
     address
   end
-
-home = Address.new
-home.kind = "Home"
-home.street_1 = "158 Woodmont Blvd"
-home.city = "Nashville"
-home.state = "TN"
-home.zip = "37205"
-
-puts home.to_s('short')
-puts "\n"
-puts home.to_s('long')
 
 end
