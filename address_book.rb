@@ -8,6 +8,35 @@ class AddressBook
     @contacts = []
   end
 
+  def run
+    loop do
+      puts "Address Book"
+      puts "a: Add Contact"
+      puts "p: Print Address Book"
+      puts "e: exit"
+      print "Enter your choice: "
+      input = gets.chomp.downcase
+      case input
+      when 'a'
+        add_contact
+      when 'p'
+        print_contact_list
+      when 'e'
+        break
+      end
+    end
+  end
+
+  def add_contact
+    contact = Contact.new
+    print "First Name: "
+    contact.first_name = gets.chomp
+    print "Middle Name: "
+    contact.middle_name = gets.chomp
+    print "Last Name: "
+    contact.last_name = gets.chomp
+    contacts << contact
+  end
 
   def print_contact_list
     puts "Contact List:"
@@ -75,25 +104,4 @@ end
 #####################################
 
 address_book = AddressBook.new
-
-lee = Contact.new
-lee.first_name = "Henry"
-lee.middle_name = "Lee"
-lee.last_name = "Peckage"
-lee.add_phone("mobile", "615.573.1234")
-lee.add_phone("home", "615.573.2436")
-lee.add_address("home", "158 Woodmont Blvd", "", "Nashville", "TN", "37205")
-lee.add_address("work", "58 Bling St", "Suite Banana", "Nashville", "TN", "37205")
-address_book.contacts.push(lee)
-
-shelley = Contact.new
-shelley.first_name = "Shelley"
-shelley.last_name = "Page"
-shelley.add_phone("home", "615-667-1857")
-shelley.add_address("home", "1234", "", "Nashville", "AZ", "54321")
-address_book.contacts.push(shelley)
-
-# address_book.print_contact_list
-# address_book.find_by_name("age")
-# address_book.find_by_phone_number('573')
-address_book.find_by_address("nash")
+address_book.run
