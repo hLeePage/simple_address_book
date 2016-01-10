@@ -13,6 +13,7 @@ class AddressBook
       puts "Address Book"
       puts "a: Add Contact"
       puts "p: Print Address Book"
+      puts "s: Search"
       puts "e: exit"
       print "Enter your choice: "
       input = gets.chomp.downcase
@@ -21,6 +22,12 @@ class AddressBook
         add_contact
       when 'p'
         print_contact_list
+      when 's'
+        print "Search term: "
+        search = gets.chomp
+        find_by_name(search)
+        find_by_address(search)
+        find_by_phone_number(search)
       when 'e'
         break
       end
@@ -74,8 +81,10 @@ class AddressBook
   end
 
   def print_contact_list
+    puts ""
     puts "Contact List:"
     @contacts.each { |contact| puts contact.to_s('last_first') }
+    puts "\n"
   end
 
 
@@ -130,7 +139,7 @@ class AddressBook
       puts contact.to_s('full_name')
       contact.print_phone_numbers
       contact.print_addresses
-      puts ""
+      puts "\n"
     end
   end
 
